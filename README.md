@@ -1,4 +1,4 @@
-```
+```python
 chrome://version/
 130.0.6723.59 (Official Build) (64-bit) (cohort: M130 Rollout)
 
