@@ -1,3 +1,4 @@
+```
 chrome://version/
 130.0.6723.59 (Official Build) (64-bit) (cohort: M130 Rollout)
 
@@ -19,3 +20,4 @@ get_log performance
 now you can copy this m3u8 path into vedio.html instead of `g_src = <m3u8 path>` var
 
 use liveserver run vedio.html
+```
