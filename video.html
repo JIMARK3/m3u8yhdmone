@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html style="width: 100%; height: 100%; margin: 0px; padding: 0px;">
+<head>
+    <meta name="referrer" content="never">
+</head>
+<body style="width: 100%; height: 100%; margin: 0px; padding: 0px;">
+<video id="video" controls preload="auto" style="width: 100%; height: 100%; outline: none;"></video>
+<script type="text/javascript">
+    //   g_src = "./index.m3u8";
+    // g_src = "https://hd.ijycnd.com/play/9aA4klPe/index.m3u8";
+    g_src = "./index_1.m3u8"
+    g_type = "application/x-mpegURL";
+</script>
+<script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/hls.js/1.1.5-0.canary.8257/hls.min.js"
+        type="application/javascript"></script>
+<script type="text/javascript">
+
+    function play_mp4(src) {
+        var video = document.getElementById('video');
+        var videoSrc = decodeURIComponent(src);
+        video.src = videoSrc;
+    }
+
+    function play_m3u8(src) {
+        var video = document.getElementById('video');
+        var videoSrc = decodeURIComponent(src);
+        console.log(videoSrc)
+        if (video.canPlayType('application/vnd.apple.mpegurl')) {
+            video.src = videoSrc;
+        } else if (Hls.isSupported()) {
+            var hls = new Hls();
+            hls.loadSource(videoSrc);
+            hls.attachMedia(video);
+        }
+    }
+</script>
+<script type="text/javascript">
+    if (g_type == 'application/x-mpegURL') {
+        play_m3u8(g_src);
+    } else if (g_type == 'video/mp4') {
+        play_mp4(g_src);
+    }
+</script>
+</body>
+</html>
