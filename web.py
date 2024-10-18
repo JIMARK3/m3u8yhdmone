@@ -41,18 +41,18 @@ def get_m3u8_url(search_urls):
 
         for log in logs:
             mesg = json.loads(log['message'])
-
-            if mesg['message']['params'].get('response') and mesg['message']['params']['response'].get('url'):
-                responseu = mesg['message']['params']['response']['url']
             if not mesg.get('message') or not mesg['message'].get('params'):
                 continue
+            if mesg['message']['params'].get('response') and mesg['message']['params']['response'].get('url'):
+                responseu = mesg['message']['params']['response']['url']
+                m3u8_url_dict[goods_url].append(responseu)
             if mesg['message']['params'].get('url'):
                 rqurls = mesg['message']['params']['url']
                 m3u8_url_dict[goods_url].append(rqurls)
                 # print(rqurls)
-            if mesg['message']['params'].get('response') and mesg['message']['params']['response'].get('url'):
-                rpurls = mesg['message']['params']['response']['url']
-                m3u8_url_dict[goods_url].append(rpurls)
+            if mesg['message']['params'].get('request') and mesg['message']['params']['request'].get('url'):
+                requrls = mesg['message']['params']['request']['url']
+                m3u8_url_dict[goods_url].append(requrls)
                 # print(rpurls)
         result = {i: [] for i in search_urls}
         for search in m3u8_url_dict:
